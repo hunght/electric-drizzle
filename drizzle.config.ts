@@ -1,11 +1,11 @@
 import { defineConfig } from "drizzle-kit";
-import { dbUrl } from "./src/lib/db/db_consts";
+import { join } from "path";
 
 export default defineConfig({
     schema: "./src/lib/db/schemas/*.ts",
     out: "./drizzle",
-    dialect: "postgresql",
+    dialect: "sqlite",
     dbCredentials: {
-        url: dbUrl,
-    },
+        url: join(process.cwd(), "sqlite.db")
+    }
 });

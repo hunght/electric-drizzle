@@ -29,19 +29,13 @@ export async function createNewClient(clientData: CreateClient) {
 }
 
 export async function getAllClients() {
-    const result = await db.query.clients.findMany({
-        columns: {
-            id: true,
-            name: true,
-            email: true,
-        },
-    });
-
+    const result = await db.query.clients.findMany();
+    console.log("result", result);
+    
     return result;
 }
 
 export async function deleteClient(clientId: string) {
     await db.delete(clients).where(eq(clients.id, clientId));
-
     return clientId;
 }
